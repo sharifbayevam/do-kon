@@ -1,70 +1,219 @@
-/* Body markazlash */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* 1. ASOSIY FON - Rasmdagi yorqin neon ko'k va havorang gradient aralashmasi */
+.premium-bg-wrapper {
+    position: relative;
+    background: #0d1527; /* Chuqur qorong'u baza */
+    /* Lightswind UI dagi kabi yorqin ko'k, firuza va havorang to'lqinli dog'lar simulyatsiyasi */
+    background-image: 
+        radial-gradient(circle at 20% 30%, #00f2fe 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, #4facfe 0%, transparent 50%),
+        radial-gradient(circle at 40% 70%, #0b3168 0%, transparent 60%),
+        radial-gradient(circle at 90% 80%, #000000 0%, transparent 40%);
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.4);
 }
 
-/* Form container */
-form {
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  width: 350px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 0.6s ease;
+/* 2. SHAFFOF SHISHA KARTA (Glassmorphic Card) - Orqa fonni chiroyli ko'rsatib turadi */
+.premium-form-card {
+    background: rgba(13, 22, 41, 0.65); /* Bir oz shaffof to'q ko'k */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.12); /* Nozik oppoq chegara line */
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 620px;
+    box-shadow: 
+        0 4px 30px rgba(0, 0, 0, 0.4),
+        0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
-/* Inputlar */
-form input {
-  padding: 12px 15px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  outline: none;
-  font-size: 14px;
-  transition: 0.3s;
+/* 3. HEADER QISMI */
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 35px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 20px;
 }
 
-/* Focus effect */
-form input:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+.form-header-icon {
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    color: #0d1527; /* Ikonka ichi to'q rangda ajralib turadi */
+    padding: 12px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
 }
 
-/* Button */
-form button {
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+.form-header h2 {
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: 700;
+    margin: 0 0 2px 0;
+    letter-spacing: -0.3px;
 }
 
-/* Hover */
-form button:hover {
-  transform: scale(1.05);
-  background: linear-gradient(135deg, #f093fb, #f5576c);
-  color: white;
+.form-header p {
+    font-size: 13px;
+    color: #94a3b8;
+    margin: 0;
 }
 
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* 4. GRID FORM ELEMENTLARI */
+.modern-grid-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Input sarlavhalari - oson o'qilishi uchun yorqinroq oq-kumush rangda */
+.input-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #cbd5e1; 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 5. INPUT VA SELECTLAR - Mutlaqo o'zgacha, kontrastli va zamonaviy */
+.input-group input, 
+.input-group select {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.04); /* Shaffof va och */
+    font-size: 15px;
+    color: #ffffff;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.input-group select option {
+    background-color: #0d1527;
+    color: #ffffff;
+}
+
+/* Inputga bosilganda yorqin neon ko'k chiziq va soya effekti */
+.input-group input:focus, 
+.input-group select:focus {
+    border-color: #00f2fe;
+    background-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+}
+
+/* SHTRIX KOD INPUTI */
+.input-with-action {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.input-with-action input {
+    padding-right: 115px;
+    border-color: rgba(0, 242, 254, 0.3);
+}
+
+/* Skaner tugmasi - Yorqin neon ko'k */
+.action-inside-btn {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    bottom: 8px;
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    color: #0d1527;
+    border: none;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.action-inside-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
+}
+
+/* 6. REAL VAQTDA FOYDA BADGE (Neon Yashil) */
+.smart-margin-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 8px;
+    font-size: 13px;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.smart-margin-badge strong {
+    color: #10b981;
+}
+
+/* 7. ASOSIY SAQLASH TUGMASI (Yorqin Premium Neon) */
+.premium-submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    color: #0d1527; /* To'q matn yorqin fonda juda qimmat ko'rinadi */
+    border: none;
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 20px rgba(0, 242, 254, 0.3);
+}
+
+.premium-submit-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 25px rgba(0, 242, 254, 0.6);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .modern-grid-form {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .full-width {
+        grid-column: span 1;
+    }
+    .premium-form-card {
+        padding: 25px 20px;
+    }
 }

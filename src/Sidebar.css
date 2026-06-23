@@ -1,0 +1,123 @@
+.sidebar {
+  /* ... boshqa kodlar ... */
+  display: flex;
+  flex-direction: column;
+  transition: none; /* Tortayotganda qotmasligi uchun */
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 5%; /* Paddingni foizda bering */
+  text-decoration: none;
+  color: white;
+  
+  /* SHU YERDA MO''JIZA: */
+  /* Sidebar kengligiga qarab shrift o'zgaradi */
+  font-size: clamp(12px, 8%, 24px); 
+  /* clamp(eng kichik, o'rtacha, eng katta) */
+  
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap; /* Yozuv pastga tushib ketmasligi uchun */
+}
+
+/* Ikonkalarni ham kattalashtiramiz */
+.sidebar a svg {
+  font-size: 1.2em; /* em - ota elementning font-size'iga qarab o'zgaradi */
+  min-width: 25px;
+}
+
+/* TORTISH CHIZIG'I - buni diqqat bilan yozing */
+.resizer {
+  width: 8px; /* Biroz qalinroq qildim, ushlash oson bo'lishi uchun */
+  cursor: col-resize;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 10;
+}
+
+.resizer:hover {
+  background-color: rgba(255, 193, 7, 0.5); /* Sariq rang ko'rinadi */
+}
+
+
+/* ⚡ MINIMALIST SIDEBAR STYLE ⚡ */
+/* ==========================================================================
+   💎 PREMIUM NEON GLASS SIDEBAR STYLE
+   ========================================================================== */
+
+.sidebar-container {
+    width: 260px;
+    min-width: 260px;
+    max-width: 260px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
+    /* To'q fon va fluid kubikka mos keluvchi shaffof yarim-to'q fon */
+    background: linear-gradient(135deg, #112137 0%, #5ab1fd 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 16px;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+/* Sidebar ichidagi barcha Link elementlari */
+.sidebar-container a {
+    position: relative;
+    width: 100%;
+    padding: 14px 16px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: rgba(254, 241, 241, 0.904) !important; /* Mayin oqish-kulrang */
+    text-decoration: none !important;
+    background: transparent !important;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    display: block;
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ⚡ Link tagidagi chiziqcha uchun asos (Uchuvchi chiziqcha) */
+.sidebar-container a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 16px;
+    width: 0; /* Boshida ko'rinmaydi */
+    height: 2px;
+    background: linear-gradient(90deg, #2744fc, #8a8bce); /* Neon ko'k va binafsha gibrid chiziq */
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sichqoncha ustiga kelganda (Hover) */
+.sidebar-container a:hover {
+    color: #ffffff !important;
+    background: rgba(253, 245, 245, 0.05) !important;
+}
+
+/* ⚡ Aktiv (Bosilgan) holatdagi Link uslubi */
+.sidebar-container a.active-btn {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    background: rgba(250, 244, 244, 0.05) !important;
+    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.03);
+}
+
+/* ⚡ Aktiv tugma bosilganda tagidagi chiziqchaning cho'zilishi */
+.sidebar-container a.active-btn::after {
+    width: calc(100% - 32px); /* Matn kengligi bo'yicha chiziqcha tortiladi */
+}

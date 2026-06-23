@@ -1,0 +1,182 @@
+/* ==========================================================================
+   ⚡ ANALITIKA SAHIFASI UCHUN PREMIUM GLASSMORPHISM USLUBLARI ⚡
+   ========================================================================== */
+
+/* 1. Yuqoridagi 3 ta statistika kartalari */
+.stat-glow-card {
+    /* Oq fon butunlay olib tashlandi, o'rniga shaffof va silliq shisha effekt */
+    background: rgba(29, 3, 3, 0.05) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 20px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sichqoncha kartaga kelganda jonlanish effekti */
+.stat-glow-card:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Har bir kartaga o'ziga xos neon nur (Glow) berish */
+.stat-glow-card.profit:hover { 
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2); 
+    border-color: rgba(33, 202, 47, 0.4) !important;
+}
+.stat-glow-card.warning:hover { 
+    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2); 
+    border-color: rgba(239, 68, 68, 0.4) !important;
+}
+.stat-glow-card.premium-accent:hover { 
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2); 
+    border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+/* Karta ichidagi sarlavhalar - ochiq kumushrang */
+.stat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #94a3b8 !important;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Karta ichidagi katta sonlar/matnlar - yorqin oq */
+.stat-glow-card h3 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff !important;
+    margin: 14px 0 6px 0;
+    letter-spacing: -0.5px;
+}
+
+/* Ikonka qutichalari */
+.stat-icon-box.green { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+.stat-icon-box.red { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+.stat-icon-box.blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+
+
+/* ==========================================================================
+   🧱 2. JADVAL VA OMBOOR NAZORATI BLOKI
+   ========================================================================== */
+.table-analytics-section {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 26px;
+    border-radius: 24px;
+}
+
+/* Sarlavha matni */
+.section-title-wrapper h4 {
+    font-size: 16px;
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+/* Jadval qatorlari */
+.stock-alert-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid #ef4444;
+    transition: all 0.2s ease;
+}
+
+.stock-alert-row:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    transform: translateX(4px);
+}
+
+.item-name {
+    font-weight: 600;
+    color: #ffffff !important;
+    font-size: 14px;
+}
+
+.item-cat {
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* Qizil badge (ogohlantirish) */
+.item-badge-status {
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: #f87171 !important;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+
+/* ==========================================================================
+   ⚡ 3. UPGRADE KARTASI (LIGHTSWIND CHAQMOQ)
+   ========================================================================== */
+.lightswind-upgrade-card {
+    /* Eski oq fon o'rniga quyuq shaffof neon fon */
+    background: rgba(15, 23, 42, 0.6) !important;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-radius: 24px;
+    padding: 35px 30px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.lightswind-upgrade-card h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff !important;
+    margin-bottom: 8px;
+}
+
+.upgrade-subtitle {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 24px;
+}
+
+.bullet-row {
+    color: #cbd5e1 !important;
+}
+
+/* Pro badge */
+.zap-badge {
+    background: rgba(59, 130, 246, 0.2) !important;
+    color: #60a5fa !important;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* CHAQMOQ AYLAMA NUR RAMKASI (Agar oldingi darsda qo'shgan bo'lsak) */
+.electric-border-effect {
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    z-index: -1;
+    background: conic-gradient(transparent, #00f2fe, #4facfe, transparent 40%);
+    animation: rotateLightning 4s linear infinite;
+    filter: blur(2px);
+}
+
+@keyframes rotateLightning {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

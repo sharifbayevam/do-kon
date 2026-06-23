@@ -1,15 +1,12 @@
-
-a{
-    font-weight: 700;
-    color:white;
-    text-decoration: inherit;
-    font-size: 30px;
-    background-color: rgb(16, 16, 135);
-    margin-bottom: 10px;
-    border-radius: 10px;
-    padding: 4px 10px;
-}
-a :hover{
-    color: rgb(139, 10, 10);
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
+*, ::before, ::after {
+  box-sizing: inherit; /* Elementlar padding hisobiga ekrandan chiqib ketmasligi uchun */
+}

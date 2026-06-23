@@ -1,26 +1,130 @@
-#root{
-    margin: 0 auto;
-    padding: 2rem;
+/* 1. BAZAVIY CLEAR */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-header{
-    position: fixed;
-    background-color: rgb(9, 62, 143);
-    left: 0;
-    top: 0;
-    bottom: 0;
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #f8fafc;
+    overflow-x: hidden;
+}
+
+/* 2. ASOSIY BLOCK KONTEYNERI */
+.dashboard-container {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+/* 3. SIDEBAR STILI (KOMPYUTER REJIMI) */
+.sidebar-container {
+    width: 260px;
+    min-width: 260px;
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    padding: 25px 15px;
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    align-items: center;
+    gap: 8px;
+    height: 100vh;
+    position: fixed; /* Kompyuterda chap tomonda qotib turadi */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
 }
-h1{
-text-align: center;
 
+.sidebar-logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
 }
-h1:hover{
- color: rgb(247, 15, 255);
+
+/* NAVIGATSIYA TUGMALARI */
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    color: #94a3b8;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
 }
-.icons{
-    margin-bottom: 8px;
-    margin-left: 5px;
+
+.nav-btn:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-btn.active {
+    color: #ffffff;
+    background: #2563eb;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.icons {
+    font-size: 16px;
+}
+
+/* O'NG TOMON KONSTENTI */
+.main-content {
+    flex: 1;
+    margin-left: 260px; /* Kompyuterda sidebar kengligicha joy ochib beradi */
+    padding: 30px;
+    min-height: 100vh;
+    background-color: #f8fafc;
+    width: calc(100vw - 260px);
+}
+
+/* ======================================================= */
+/* 📱 SMARTFONLAR VA PLANSHETLAR UCHUN MAXSUS SOZLAMA     */
+/* ======================================================= */
+@media (max-width: 991px) {
+    .dashboard-container {
+        flex-direction: column; /* Yonma-yonlik tugab, hamma narsa ustun shakliga keladi */
+    }
+
+    /* Menyu endi yonda emas, ekranning ENG TEPASIDA gorizontal turadi */
+    .sidebar-container {
+        width: 100% !important;
+        min-width: 100% !important;
+        height: auto !important;
+        position: static !important; /* Fixed holatidan chiqadi, sahifa bilan birga skroll bo'ladi */
+        flex-direction: row !important; /* Ichidagi tugmalar yonma-yon tiziladi */
+        overflow-x: auto; /* Agar tugmalar telefonga sig'masa, barmog' bilan o'ngga-chapga suriladi */
+        padding: 12px;
+        gap: 8px;
+        background: #0f172a; /* Mobil uchun toza to'q ko'k fon */
+    }
+
+    .sidebar-logo {
+        display: none !important; /* Telefonda juda katta joy yo'qotmaslik uchun logoni yashiramiz */
+    }
+
+    .nav-btn {
+        width: auto !important;
+        white-space: nowrap !important; /* Matnlar ikki qatorga bo'linib ketmaydi */
+        padding: 10px 16px !important;
+        font-size: 13px !important;
+    }
+
+    /* KONTENT HUDUDI (TELEFON) */
+    .main-content {
+        margin-left: 0 !important; /* Chap tomondagi 260px joy nolga tenglashadi */
+        width: 100% !important;
+        padding: 15px !important;
+    }
 }

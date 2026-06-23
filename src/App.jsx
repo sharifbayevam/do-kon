@@ -1,37 +1,42 @@
-import './App.css'
-import Kassa from './components/Kassa'
-import Ombor from './components/Ombor'
-import Analtika from './components/Analtika'
-import CreateProducts from './components/CreateProducts'
-import { FaBasketShopping } from "react-icons/fa6";
-import { FiClipboard } from "react-icons/fi";
-import { IoMdAnalytics } from "react-icons/io";
-import { TiEdit } from "react-icons/ti";
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-function App() {
+import React, { useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom'; 
+import Sidebar from './Sidebar'; 
+import Kassa from './components/Kassa';
+import Ombor from './components/Ombor';
+import Mijozlar from './components/Mijozlar';
+import Analtika from './components/Analtika'; 
+import CreateProducts from './components/CreateProducts';
+import CubeBackground from './components/CubeBackground';
 
+function App() {
+  // Kassadan signal kelganda Mijozlardagi inputni uyg'otuvchi trigger
+  const [triggerFocus, setTriggerFocus] = useState(false);
 
   return (
-    <>
-      <BrowserRouter>
-<header>
-  <Link to='/'>Kassa               {<FaBasketShopping />}</Link>
-  <Link to='/ombor'>Obmor           {<FiClipboard />}</Link>
- <Link to='/analtika'>Analtika       {<IoMdAnalytics />}</Link>
-  <Link to='/createProducts'>+Yangi Tovar           {<TiEdit />}</Link>
-</header>
-<Routes>
-  <Route path='/' element={<Kassa />}/>
-  <Route path='/ombor' element={<Ombor />}/>
-  <Route path='/analtika' element={<Analtika />}/>
-  <Route path='/createProducts' element={<CreateProducts />}/>
-</Routes>
+    <div className="main-app-layout" style={{ display: 'flex', width: '100%', minHeight: '100vh', background: '#f6f9fc' }}>
+      {/* 1. Chap tomondagi doimiy menyu */}
+      <Sidebar />
 
+      {/* 2. O'ng tomondagi dinamik kontent va aylanuvchi fon */}
+      <div className="main-dynamic-content" style={{ flex: 1, minWidth: 0, position: 'relative' }}>
+        <CubeBackground>
+          
+          <Routes>
+            {/* Sayt ochilganda avtomatik /kassa linkiga o'tkazib yuboradi */}
+            <Route path="/" element={<Navigate to="/kassa" />} />
+            
+            {/* Haqiqiy brauzer linklari (Triggerni prop sifatida uzatamiz) */}
+            <Route path="/kassa" element={<Kassa setTriggerFocus={setTriggerFocus} />} />
+            <Route path="/ombor" element={<Ombor />} />
+            <Route path="/mijozlar" element={<Mijozlar triggerFocus={triggerFocus} setTriggerFocus={setTriggerFocus} />} />
+            <Route path="/analtika" element={<Analtika />} />
+            <Route path="/yangi-tovar" element={<CreateProducts />} />
+          </Routes>
 
-      </BrowserRouter>
-    
-    </>
-  )
+        </CubeBackground>
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

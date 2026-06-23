@@ -1,159 +1,299 @@
-/* Umumiy */
-body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: #f4f6fb;
+/* ⚡ OMBOR VA MIJOZLAR KARTALARINI JONLANTIRISH ⚡ */
+
+/* Sahifadagi asosiy oq blok yoki jadval orqa foni */
+.ombor-container, .mijozlar-container, .table-wrapper, .main-card {
+    background: rgba(255, 255, 255, 0.65) !important; /* Shaffof oq shisha */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.015);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Sarlavha */
-h1 {
-  text-align: center;
-  margin: 20px 0;
-  color: #333;
+/* Sichqoncha borganda yengilgina nafas olish effekti */
+.ombor-container:hover, .mijozlar-container:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 20px 40px rgba(14, 165, 233, 0.06); /* Pastdan havo rang mayin soya */
+    border-color: rgba(14, 165, 233, 0.2) !important;
 }
 
-/* TABLE */
-.table {
-  width: 90%;
-  margin: auto;
-  border-collapse: collapse;
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+/* Jadvaldagi qatorlar (Inputlar yoki TR elementlari) */
+.table-row, .grid-item, .custom-tr {
+    background: rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    border-radius: 12px;
+    transition: all 0.2s ease;
 }
 
-.table thead {
-  background: linear-gradient(135deg, #36d1dc, #5b86e5);
-  color: white;
+.table-row:hover {
+    background: #ffffff !important;
+    transform: scale(1.01);
 }
 
-.table th,
-.table td {
-  padding: 15px;
-  text-align: center;
+/* Barcha matnlar aniq ko'rinishi uchun to'q kulrang */
+h1, h2, h3, h4, th, td, label {
+    color: #0f172a !important; 
+}
+/* ==========================================================================
+   📦 OMBOR SAHIFASI UNIVERSAL MAKETI
+   ========================================================================== */
+
+.ombor-container {
+    width: 100% !important;
+    max-width: 1300px !important;
+    margin: 0 auto !important;
+    padding: 30px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    box-sizing: border-box !important;
 }
 
-.table tbody tr {
-  transition: 0.3s;
+/* Ombor ichidagi jadvallar siqilib ketmasligi uchun */
+.ombor-table-wrapper {
+    width: 100% !important;
+    overflow-x: auto !important; /* Kichik ekranlarda skroll bo'ladi, sinmaydi */
+    background: rgba(255, 255, 255, 0.04) !important;
+    backdrop-filter: blur(14px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.table tbody tr:hover {
-  background: #f1f7ff;
+.ombor-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
 }
 
-/* BUTTONLAR */
-.btn {
-  padding: 8px 15px;
-  border: none;
-  border-radius: 8px;
-  background: #4facfe;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+.ombor-table th {
+    background: rgba(255, 255, 255, 0.06) !important;
+    color: #cbd5e1 !important;
+    padding: 14px 18px !important;
+    font-weight: 600;
+    text-align: left;
 }
 
-.btn:hover {
-  background: #007bff;
-  transform: scale(1.05);
+.ombor-table td {
+    padding: 14px 18px !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+/* ==========================================================================
+   📦 OMBOR BOSHQARUVI - PREMIUM DARK NEON GLASS DESIGN
+   ========================================================================== */
+
+.ombor-wrapper {
+    padding: 30px !important;
+    min-height: 100vh !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
 }
 
-.btn1 {
-  padding: 8px 15px;
-  border: none;
-  border-radius: 8px;
-  background: #ff6b6b;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
+/* 🔝 Sarlavha qismi */
+.ombor-title {
+    color: #ffffff !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    margin: 0 0 4px 0 !important;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
-.btn1:hover {
-  background: #e63946;
-  transform: scale(1.05);
+.ombor-subtitle {
+    color: rgba(255, 255, 255, 0.45) !important;
+    margin: 0 !important;
+    font-size: 14px !important;
 }
 
-/* EDIT FORM (MODAL STYLE) */
-.editForm {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  width: 350px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  z-index: 1000;
-  animation: popUp 0.3s ease;
+/* 📥 📤 Excel Tugmalari */
+.excel-btn-import {
+    background: #2563eb !important;
+    color: white !important;
+    padding: 12px 20px !important;
+    border: none !important;
+    border-radius: 12px !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2) !important;
+}
+.excel-btn-import:hover {
+    background: #3b82f6 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
 }
 
-/* INPUT */
-.editForm input {
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  outline: none;
-  transition: 0.3s;
+.excel-btn-export {
+    background: #10b981 !important;
+    color: white !important;
+    padding: 12px 20px !important;
+    border: none !important;
+    border-radius: 12px !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2) !important;
+}
+.excel-btn-export:hover {
+    background: #059669 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4) !important;
 }
 
-.editForm input:focus {
-  border-color: #5b86e5;
-  box-shadow: 0 0 5px rgba(91,134,229,0.5);
+/* ➕ YANGI TOVAR FORMASI (GLASS BOX) */
+.form-container-glass {
+    background: rgba(30, 41, 59, 0.3) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 24px !important;
+    border-radius: 24px !important;
+    margin-bottom: 30px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* BUTTON GROUP */
-.d {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
+.form-title-glass {
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin: 0 0 20px 0 !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* CANCEL */
-.btn3 {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  background: #ccc;
-  cursor: pointer;
-  transition: 0.3s;
+.input-label-glass {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    display: block;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
 }
 
-.btn3:hover {
-  background: #999;
-  color: white;
+/* 🔍 Form ichidagi barcha Inputlar */
+.input-field-glass {
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 12px 14px !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    transition: all 0.25s ease !important;
+}
+.input-field-glass:focus {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: #6366f1 !important; /* Indigo neon chegara */
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
+}
+.input-field-glass::placeholder {
+    color: rgba(255, 255, 255, 0.25) !important;
 }
 
-/* SAVE */
-.btn4 {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #43e97b, #38f9d7);
-  cursor: pointer;
-  transition: 0.3s;
-  color: #333;
-  font-weight: bold;
+/* 💾 Tovar saqlash tugmasi */
+.btn-submit-glass {
+    width: 100% !important;
+    padding: 13px !important;
+    background: #6366f1 !important; /* Indigo neon */
+    color: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    cursor: pointer !important;
+    transition: all 0.25s ease !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3) !important;
+}
+.btn-submit-glass:hover {
+    background: #4f46e5 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5) !important;
 }
 
-.btn4:hover {
-  transform: scale(1.05);
-  color: black;
+
+/* 📊 JADVAL QOBIG'I (TABLE GLASS BOX) */
+.table-container-glass {
+    background: rgba(30, 41, 59, 0.3) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 24px !important;
+    padding: 12px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+    overflow-x: auto;
 }
 
-/* ANIMATION */
-@keyframes popUp {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -60%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
+.ombor-table-glass {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 8px !important;
+    background: transparent !important;
+    text-align: left;
 }
+
+.ombor-table-glass th {
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.45) !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.ombor-table-glass tr {
+    background: rgba(255, 255, 255, 0.02) !important;
+    transition: all 0.25s ease !important;
+}
+
+.ombor-table-glass td {
+    padding: 16px 20px !important;
+    color: #e2e8f0 !important;
+    font-size: 15px !important;
+    border: none !important;
+    vertical-align: middle;
+}
+
+/* Burchaklarni tekislash */
+.ombor-table-glass tr td:first-child { border-radius: 14px 0 0 14px !important; }
+.ombor-table-glass tr td:last-child { border-radius: 0 14px 14px 0 !important; }
+
+/* Sichqoncha qator ustiga kelganda */
+.ombor-table-glass tbody tr:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25) !important;
+}
+
+.barcode-text { color: rgba(255, 255, 255, 0.4) !important; font-family: monospace; }
+.prod-name-bold { color: #ffffff !important; font-weight: 600 !important; }
+
+/* Kategoriya nishoni */
+.cat-badge {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #cbd5e1 !important;
+    padding: 5px 12px !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Qoldiq miqdori (Yashil neon nishon) */
+.stock-badge-ombor {
+    background: rgba(16, 185, 129, 0.12) !important;
+    color: #10b981 !important;
+    padding: 4px 10px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    display: inline-block;
+}
+
+.price-text-white { color: #ffffff !important; }
+.price-text-bold { color: #38bdf8 !important; font-weight: 700 !important; } /* Sotilish narxi neon havorang */

@@ -12,9 +12,12 @@ function Ombor() {
   const [costPrice, setCostPrice] = useState('');
   const [price, setPrice] = useState('');
 
+  // 🌐 .env faylidan jonli Render backend havolasini o'qib olish
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
   // 1. Sahifa yuklanganda SQLite bazasidan barcha tovarlarni olib kelish
   useEffect(() => {
-    fetch('http://localhost:5000/api/products')
+    fetch(`${API_BASE_URL}/api/products`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -22,7 +25,7 @@ function Ombor() {
         }
       })
       .catch(err => console.error("Ombor ma'lumotlarini yuklashda xatolik:", err));
-  }, []);
+  }, [API_BASE_URL]);
 
   // 2. Yangi tovar qo'shish funksiyasini SQLite backendga ulash
   const handleAddProduct = (e) => {
@@ -40,7 +43,7 @@ function Ombor() {
     };
 
     // Serverga so'rov yuboramiz
-    fetch('http://localhost:5000/api/products', {
+    fetch(`${API_BASE_URL}/api/products`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newProd)

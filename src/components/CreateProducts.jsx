@@ -15,6 +15,9 @@ function CreateProducts() {
   const [marginInfo, setMarginInfo] = useState({ profit: 0, percent: 0 });
   const barcodeRef = useRef(null);
 
+  // 🌐 .env faylidan jonli Render backend havolasini o'qib olish
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     if (barcodeRef.current) {
       barcodeRef.current.focus();
@@ -60,7 +63,7 @@ function CreateProducts() {
       price: Number(formData.sellingPrice) || 0    // backend ustuni nomiga moslandi
     };
 
-    fetch('http://localhost:5000/api/products', {
+    fetch(`${API_BASE_URL}/api/products`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(productData)

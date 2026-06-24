@@ -12,8 +12,11 @@ function Analtika() {
 
   // 1. Sahifa yuklanganda SQLite bazasidan ma'lumotlarni hisoblab olish
   useEffect(() => {
+    // 🌐 .env faylidan jonli Render backend havolasini o'qib olish
+    const API_BASE_URL = import.meta.env.VITE_API_URL;
+
     // Ombordagi kam qolgan tovarlarni va ularning sonini olish
-    fetch('http://localhost:5000/api/products')
+    fetch(`${API_BASE_URL}/api/products`)
       .then(res => res.json())
       .then(products => {
         if (Array.isArray(products)) {
@@ -26,7 +29,7 @@ function Analtika() {
       .catch(err => console.error("Mahsulotlarni tahlil qilishda xatolik:", err));
 
     // Bugungi savdolar va eng xaridorgir mahsulotni aniqlash
-    fetch('http://localhost:5000/api/sales')
+    fetch(`${API_BASE_URL}/api/sales`)
       .then(res => res.json())
       .then(sales => {
         if (Array.isArray(sales)) {

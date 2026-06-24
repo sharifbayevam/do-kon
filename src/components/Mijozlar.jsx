@@ -11,9 +11,12 @@ function Mijozlar({ triggerFocus, setTriggerFocus }) { // ⚡ App.jsx dan kelayo
   // 1. Ism kiritadigan input uchun havola (ref)
   const nameInputRef = useRef(null);
 
+  // 🌐 .env faylidan jonli Render backend havolasini o'qib olish
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
   // 2. Sahifa yuklanganda SQLite bazasidan real mijozlarni olish
   useEffect(() => {
-    fetch('http://localhost:5000/api/customers')
+    fetch(`${API_BASE_URL}/api/customers`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -21,7 +24,7 @@ function Mijozlar({ triggerFocus, setTriggerFocus }) { // ⚡ App.jsx dan kelayo
         }
       })
       .catch(err => console.error("Mijozlarni yuklashda xatolik:", err));
-  }, []);
+  }, [API_BASE_URL]);
 
   // 3. Kassadan "+ Yangi mijoz" bosilib o'tilganda inputni uyg'otish (Focus)
   useEffect(() => {
@@ -43,7 +46,7 @@ function Mijozlar({ triggerFocus, setTriggerFocus }) { // ⚡ App.jsx dan kelayo
       phone: phone || "Kiritilmagan"
     };
 
-    fetch('http://localhost:5000/api/customers', {
+    fetch(`${API_BASE_URL}/api/customers`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newCustomer)
@@ -63,7 +66,7 @@ function Mijozlar({ triggerFocus, setTriggerFocus }) { // ⚡ App.jsx dan kelayo
   // 5. Mijozni SQLite bazasidan xavfsiz o'chirish
   const handleDeleteCustomer = (id) => {
     if (window.confirm("Haqiqatan ham bu mijozni o'chirmoqchisiz?")) {
-      fetch(`http://localhost:5000/api/customers/${id}`, {
+      fetch(`${API_BASE_URL}/api/customers/${id}`, {
         method: 'DELETE'
       })
         .then(res => res.json())

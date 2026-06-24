@@ -16,20 +16,23 @@ function Kassa({ setTriggerFocus }) { // App.jsx dan trigger qabul qilindi
   const [selectedCustomerId, setSelectedCustomerId] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
+  // 🌐 .env faylidan jonli Render backend havolasini o'qib olish
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
   // 1. Sahifa yuklanganda SQLite bazasidan hamma tovarlar va mijozlarni olib kelish
   useEffect(() => {
     // Tovarlarni olish
-    fetch('http://localhost:5000/api/products')
+    fetch(`${API_BASE_URL}/api/products`)
       .then(res => res.json())
       .then(data => { if (Array.isArray(data)) setProducts(data); })
       .catch(err => console.error("Tovarlarni yuklashda xatolik:", err));
 
     // Mijozlarni olish
-    fetch('http://localhost:5000/api/customers')
+    fetch(`${API_BASE_URL}/api/customers`)
       .then(res => res.json())
       .then(data => { if (Array.isArray(data)) setCustomers(data); })
       .catch(err => console.error("Mijozlarni yuklashda xatolik:", err));
-  }, []);
+  }, [API_BASE_URL]);
 
   // 2. SHTRIX-KOD ORQALI AVTOMATIK SAVATGA QO'SHISH LOGIKASI
   const handleSearchChange = (e) => {
@@ -95,7 +98,7 @@ function Kassa({ setTriggerFocus }) { // App.jsx dan trigger qabul qilindi
     };
 
     // SQLite Serverga so'rov yuboramiz
-    fetch('http://localhost:5000/api/sales', {
+    fetch(`${API_BASE_URL}/api/sales`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(checkoutData)
@@ -114,7 +117,7 @@ function Kassa({ setTriggerFocus }) { // App.jsx dan trigger qabul qilindi
           setSelectedCustomerId('');
           
           // Ombordagi yangilangan qoldiqlarni qayta yuklash
-          return fetch('http://localhost:5000/api/products')
+          return fetch(`${API_BASE_URL}/api/products`)
             .then(res => res.json())
             .then(data => { if (Array.isArray(data)) setProducts(data); });
         }

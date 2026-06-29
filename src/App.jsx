@@ -9,7 +9,6 @@ import CreateProducts from './components/CreateProducts';
 import CubeBackground from './components/CubeBackground';
 
 function App() {
-  // Kassadan signal kelganda Mijozlardagi inputni uyg'otuvchi trigger
   const [triggerFocus, setTriggerFocus] = useState(false);
 
   return (
@@ -22,10 +21,8 @@ function App() {
         <CubeBackground>
           
           <Routes>
-            {/* Sayt ochilganda avtomatik /kassa linkiga o'tkazib yuboradi */}
             <Route path="/" element={<Navigate to="/kassa" />} />
             
-            {/* Haqiqiy brauzer linklari (Triggerni prop sifatida uzatamiz) */}
             <Route path="/kassa" element={<Kassa setTriggerFocus={setTriggerFocus} />} />
             <Route path="/ombor" element={<Ombor />} />
             <Route path="/mijozlar" element={<Mijozlar triggerFocus={triggerFocus} setTriggerFocus={setTriggerFocus} />} />

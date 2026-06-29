@@ -16,9 +16,8 @@ function Kassa({ setTriggerFocus }) { // App.jsx dan trigger qabul qilindi
   const [selectedCustomerId, setSelectedCustomerId] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Buni yozing:
+  // 🌐 .env faylidan jonli Render backend havolasini o'qib olish
 const API_BASE_URL = 'https://backend-magazin-1.onrender.com';
-
   // 1. Sahifa yuklanganda SQLite bazasidan hamma tovarlar va mijozlarni olib kelish
   useEffect(() => {
     // Tovarlarni olish

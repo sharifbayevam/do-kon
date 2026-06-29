@@ -12,7 +12,6 @@ function Analtika() {
 
   // 1. Sahifa yuklanganda SQLite bazasidan ma'lumotlarni hisoblab olish
   useEffect(() => {
-// Buni yozing:
 const API_BASE_URL = 'https://backend-magazin-1.onrender.com';
     // Ombordagi kam qolgan tovarlarni va ularning sonini olish
     fetch(`${API_BASE_URL}/api/products`)

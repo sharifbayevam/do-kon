@@ -12,8 +12,7 @@ function Mijozlar({ triggerFocus, setTriggerFocus }) { // ⚡ App.jsx dan kelayo
   const nameInputRef = useRef(null);
 
   // 🌐 .env faylidan jonli Render backend havolasini o'qib olish
-  const API_BASE_URL = import.meta.env.VITE_API_URL;
-
+const API_BASE_URL = 'https://backend-magazin-1.onrender.com';
   // 2. Sahifa yuklanganda SQLite bazasidan real mijozlarni olish
   useEffect(() => {
     fetch(`${API_BASE_URL}/api/customers`)

@@ -12,7 +12,9 @@ function Ombor() {
   const [costPrice, setCostPrice] = useState('');
   const [price, setPrice] = useState('');
 
-const API_BASE_URL = 'https://backend-magazin-1.onrender.com';
+  // 🌐 .env faylidan jonli Render backend havolasini o'qib olish
+  const API_BASE_URL = 'https://backend-magazin-1.onrender.com';
+
   // 1. Sahifa yuklanganda SQLite bazasidan barcha tovarlarni olib kelish
   useEffect(() => {
     fetch(`${API_BASE_URL}/api/products`)
@@ -25,7 +27,29 @@ const API_BASE_URL = 'https://backend-magazin-1.onrender.com';
       .catch(err => console.error("Ombor ma'lumotlarini yuklashda xatolik:", err));
   }, [API_BASE_URL]);
 
-  // 2. Yangi tovar qo'shish funksiyasini SQLite backendga ulash
+  // ❌ 2. Ombordan mahsulotni o'chirish funksiyasi (Yangi qo'shildi)
+  const handleDeleteProduct = (id) => {
+    if (window.confirm("Ushbu mahsulotni ombordan butunlay o'chirmoqchimisiz?")) {
+      fetch(`${API_BASE_URL}/api/products/${id}`, {
+        method: 'DELETE',
+      })
+        .then(res => res.json())
+        .then(resData => {
+          if (resData.success) {
+            // Kassada ham qolmasligi uchun ekrandan filter qilib tashlaymiz
+            setProducts(prevProducts => prevProducts.filter(p => p.id !== id));
+          } else {
+            alert(resData.message || "O'chirishda xatolik yuz berdi.");
+          }
+        })
+        .catch(err => {
+          console.error("Xatolik:", err);
+          alert("Server bilan bog'lanishda xatolik ketdi.");
+        });
+    }
+  };
+
+  // 3. Yangi tovar qo'shish funksiyasini SQLite backendga ulash
   const handleAddProduct = (e) => {
     e.preventDefault();
     if (!name || !price) return alert("Nom va Sotish narxini kiriting!");
@@ -110,6 +134,7 @@ const API_BASE_URL = 'https://backend-magazin-1.onrender.com';
             <input type="number" placeholder="Chakana" value={price} onChange={e => setPrice(e.target.value)} className="input-field-glass" />
           </div>
           <div>
+            <label></label>
             <button type="submit" className="btn-submit-glass">Saqlash</button>
           </div>
         </form>
@@ -126,6 +151,7 @@ const API_BASE_URL = 'https://backend-magazin-1.onrender.com';
               <th>Qoldiq</th>
               <th>Kelgan Narxi</th>
               <th>Sotilish Narxi</th>
+              <th>Amal</th> {/* 👈 Sarlavhaga yangi ustun qo'shildi */}
             </tr>
           </thead>
           <tbody>
@@ -137,6 +163,33 @@ const API_BASE_URL = 'https://backend-magazin-1.onrender.com';
                 <td><span className="stock-badge-ombor">{p.stock} ta</span></td>
                 <td className="price-text-white">{(p.cost_price || 0).toLocaleString()} so'm</td>
                 <td className="price-text-bold">{(p.price || 0).toLocaleString()} so'm</td>
+                <td>
+                  {/* 👈 O'chirish neon tugmasi */}
+                  <button 
+                    onClick={() => handleDeleteProduct(p.id)}
+                    style={{
+                      backgroundColor: 'rgba(239, 68, 68, 0.2)',
+                      border: '1px solid #ef4444',
+                      color: '#f87171',
+                      padding: '6px 14px',
+                      borderRadius: '6px',
+                      cursor: 'pointer',
+                      fontSize: '13px',
+                      fontWeight: 'bold',
+                      transition: 'all 0.2s ease'
+                    }}
+                    onMouseOver={(e) => {
+                      e.target.style.backgroundColor = '#ef4444';
+                      e.target.style.color = 'white';
+                    }}
+                    onMouseOut={(e) => {
+                      e.target.style.backgroundColor = 'rgba(239, 68, 68, 0.2)';
+                      e.target.style.color = '#f87171';
+                    }}
+                  >
+                    O'chirish
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>

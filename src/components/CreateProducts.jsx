@@ -143,6 +143,7 @@ const API_BASE_URL = 'https://backend-magazin-1.onrender.com';
               <option value="Oziq-ovqat">Oziq-ovqat</option>
               <option value="Sut mahsulotlari">Sut mahsulotlari</option>
               <option value="Shirinliklar">Shirinliklar</option>
+              <option value="Sabzavotlar">Sabzavotlar</option>
             </select>
           </div>
 
